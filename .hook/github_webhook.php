@@ -19,7 +19,7 @@ try {
 	if ($status !== 0) {
 		poc_error("Fetch error - $status", $output);
 	}
-	exec('git merge -s recursive -Xtheirs _lean_upstream -m "'. $payload['head_commit']['message'] .'"', $output, $status);
+	exec('git merge -s recursive -Xtheirs _lean_upstream -m "From upstream: '. $payload['head_commit']['message'] .'"', $output, $status);
 	if ($status == 128) {
 		poc_error("Uncommitted changes present - Merge blocked", $output);
 	}
