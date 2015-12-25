@@ -1,0 +1,19 @@
+# Always start with an API version. This will increment as Quicksilver evolves.
+api_version: 1
+
+# Now specify the workflows to which you want to hook operations.
+workflows:
+  sync_code:
+    # Each workflow can have a before and after operation.
+    after:
+      # For now, the only "type" available is webphp.
+      - type: webphp
+        # This will show up in output to help you keep track of your operations.
+        description: Push changes back to GitHub if needed
+        # This is (obviously) the path to the script.
+        script: private/scripts/push_to_github.php
+      - type: webphp
+        # This will show up in output to help you keep track of your operations.
+        description: WordPress build
+        # This is (obviously) the path to the script.
+        script: private/scripts/build.php
